@@ -1,7 +1,9 @@
 package com.wipro.cws.service;
 import com.wipro.cws.entity.*;
+import com.wipro.cws.entity.Package;
 import com.wipro.cws.util.*;
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class BookingService {
 	private ArrayList<User> users;
@@ -59,17 +61,15 @@ public class BookingService {
 	}
 	public Booking bookService(String userId, String centerId, String packageId, String date, String
 			timeSlot) throws Exception{
-		boolean validateuser= validateUser(userId);
-		ServiceCenter findcenter= findCenter(centerId);
-		boolean checkslot = checkSlotAvailability(centerId,date,timeSlot);
+		Booking booking;
+		boolean validateuser=validateUser(userId);
+		ServiceCenter findcenter=findCenter(centerId);
 		Package findpackage= findPackage(packageId);
-		boolean checkpackage=true;
 		double totalFare = calculateFare(findpackage);
-		if(validateuser&&checkslot&&checkpackage)
-		{
-		 Booking booking =new Booking("1#2d343r",userId,centerId,packageId,date,timeSlot,totalFare);	
-		}
-		    
+		 booking =new Booking(UUID.randomUUID().toString(),userId,centerId,packageId,date,timeSlot,totalFare);	
+		 bookings.add(booking);
+		 return booking;
+		
 	}
 	private double calculateFare(Package pkg)
 	{
@@ -92,7 +92,7 @@ public class BookingService {
 		{
 			if(booking.getUserId().equals(userId))
 			{
-				System.out.println("Center Id :"+booking.getCenterId()+"Date :"+booking.getDate()+"Time :"+booking.getTimeSlot()+"Package Id:"+booking.getPackageId());
+				System.out.println("Center Id :"+booking.getCenterId()+"\nDate :"+booking.getDate()+"\nTime :"+booking.getTimeSlot()+"\nPackage Id:"+booking.getPackageId());
 			}
 		}
 	}
