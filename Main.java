@@ -1,6 +1,7 @@
 package com.wipro.cws.main;
 import java.util.ArrayList;
 import com.wipro.cws.entity.*;
+import com.wipro.cws.entity.Package;
 import com.wipro.cws.service.BookingService;
 import com.wipro.cws.util.*;
 public class Main {
@@ -17,7 +18,7 @@ public class Main {
  ArrayList<Booking> bookings = new ArrayList<>();
  BookingService service = new BookingService(users, centers, packages, bookings);
  try {
- Booking b1 = service.bookService("U001", "C101", "P002", "2025-09-20", "10 AM - 11 AM");
+ Booking b1 = service.bookService("U002", "C101", "P002", "2025-09-20", "10 AM - 11 AM");
  System.out.println("Booking Successful! ID: " + b1.getBookingId());
  System.out.println("\n--- User Bookings (U001) ---");
  service.printUserBookings("U001");
