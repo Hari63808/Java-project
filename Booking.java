@@ -1,6 +1,7 @@
 package com.wipro.cws.entity;
 
 public class Booking {
+	private String bookingId;
 	private String userId;
 	private String centerId;
 	private String packageId;
@@ -8,8 +9,9 @@ public class Booking {
 	private String timeSlot;
 	private double totalFare;
 	
-	public Booking(String userId, String centerId, String packageId, String date, String timeSlot, double totalFare) {
+	public Booking(String bookingId,String userId, String centerId, String packageId, String date, String timeSlot, double totalFare) {
 		super();
+		this.bookingId=bookingId;
 		this.userId = userId;
 		this.centerId = centerId;
 		this.packageId = packageId;
@@ -22,6 +24,9 @@ public class Booking {
 	}
 	public void setUserId(String userId) {
 		this.userId = userId;
+	}
+	public String getBookingId() {
+		return bookingId;
 	}
 	public String getCenterId() {
 		return centerId;
